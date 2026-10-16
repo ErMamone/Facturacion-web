@@ -1,0 +1,191 @@
+/* Ajustes mínimos sobre Pico.css */
+
+:root {
+  --pico-form-element-spacing-vertical: 0.6rem;
+}
+
+header.container nav {
+  border-bottom: 1px solid var(--pico-muted-border-color);
+  margin-bottom: 1.5rem;
+}
+
+.marca {
+  font-size: 1.15rem;
+}
+
+nav a[aria-current="page"] {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+main.container {
+  padding-bottom: 3rem;
+}
+
+.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.secundario {
+  color: var(--pico-muted-color);
+}
+
+.aviso-error {
+  color: var(--pico-del-color);
+}
+
+.etiqueta-vencida {
+  color: var(--pico-del-color);
+  font-weight: 600;
+}
+
+.vacio {
+  text-align: center;
+  color: var(--pico-muted-color);
+}
+
+button.chico {
+  padding: 0.35rem 0.8rem;
+  font-size: 0.9rem;
+  width: auto;
+}
+
+/* --- Crear factura --- */
+
+fieldset.tarjeta {
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  padding: 1rem 1rem 0;
+}
+
+fieldset.tarjeta legend {
+  font-weight: 600;
+  padding: 0 0.4rem;
+}
+
+.encabezado-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.encabezado-items .moneda {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.encabezado-items select {
+  margin: 0;
+  width: auto;
+}
+
+.fila-item {
+  display: grid;
+  grid-template-columns: 1fr 6rem 9rem 9rem 2.75rem;
+  gap: 0.75rem;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+.fila-item input {
+  margin-bottom: 0;
+}
+
+.fila-item small {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.fila-item.cabecera {
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+  margin-bottom: 0.25rem;
+}
+
+.fila-item .subtotal {
+  padding-top: 0.65rem;
+}
+
+.fila-item .quitar {
+  padding: 0.55rem 0;
+  width: 100%;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.25rem;
+}
+
+.conversor {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  margin-top: 0.75rem;
+}
+
+.conversor label {
+  flex: 1;
+}
+
+.conversor button {
+  width: auto;
+  margin-bottom: var(--pico-spacing);
+}
+
+.exito {
+  text-align: center;
+}
+
+.exito code {
+  user-select: all;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .fila-item {
+    grid-template-columns: 1fr 1fr 2.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--pico-muted-border-color);
+  }
+  .fila-item > :first-child {
+    grid-column: 1 / -1;
+  }
+  .fila-item .subtotal {
+    grid-column: 1 / 3;
+    padding-top: 0;
+  }
+  .fila-item > :last-child {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .fila-item.cabecera {
+    display: none;
+  }
+  .conversor {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .conversor button {
+    width: 100%;
+  }
+}
+
+.paginado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
