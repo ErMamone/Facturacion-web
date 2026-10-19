@@ -67,3 +67,6 @@ jobs:
           docker tag $IMAGE:${{ github.sha }} $IMAGE:latest
           docker push $IMAGE:${{ github.sha }}
           docker push $IMAGE:latest
+          VERSION=$(jq -r .version package.json)
+          docker tag $IMAGE:${{ github.sha }} $IMAGE:$VERSION
+          docker push $IMAGE:$VERSION
