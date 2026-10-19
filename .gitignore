@@ -55,6 +55,11 @@ lerna-debug.log*
 *.sln
 *.sw?
 
+# Asistentes de IA
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
 # Sistema operativo
 .DS_Store
 Thumbs.db
