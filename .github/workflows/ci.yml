@@ -18,19 +18,16 @@ jobs:
           node-version: "24"
           cache: npm
       - run: npm ci
-      # tsc --noEmit + vite build
       - run: npm run build
 
   imagen:
     needs: build
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    # El rol de AWS solo confía en jobs del environment `demo` (pide aprobación).
-    # Variables AWS_ROLE_ARN, AWS_REGION y ECR_REPOSITORY: definidas en el environment.
     environment: demo
     permissions:
       contents: read
-      id-token: write # OIDC hacia AWS: sin access keys guardadas en GitHub
+      id-token: write
     env:
       AWS_REGION: ${{ vars.AWS_REGION }}
       ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY }}
@@ -56,7 +53,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # CVEs de la imagen (Alpine + nginx). Corta el pipeline si hay CRITICAL/HIGH con fix.
       - name: Trivy
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
